@@ -1,0 +1,57 @@
+b.Title("My Dashboard");
+{
+    gh::Row r(b);
+    b.Input().valueStr("input text");
+    b.Pass().valueStr("pass");
+}
+{
+    gh::Row r(b);
+    b.InputArea().valueStr("big text\narea");
+}
+{
+    gh::Row r(b);
+    b.Slider().valueInt(10);
+    b.Spinner().valueFloat(3.14);
+}
+{
+    gh::Row r(b);
+    b.Date();
+    b.Time();
+}
+
+b.DateTime();
+gh::Flags f;
+f.set(3);
+b.Flags(&f).text("select;some;flag;monday;friday");
+
+{
+    gh::Row r(b);
+    b.Select().text("first;second;third");
+    b.Tabs().text("tab 1;tab 2;tab 3");
+}
+{
+    gh::Row r(b);
+    b.Button();
+    b.LED().valueInt(1);
+    b.Switch();
+    b.SwitchIcon().icon("");
+}
+{
+    gh::Row r(b);
+    b.Label("some label");
+    b.Display("Some\ntext");
+}
+{
+    gh::Row r(b);
+    b.Joystick();
+    b.Dpad();
+}
+{
+    gh::Row r(b);
+    b.GaugeRound().valueInt(33).unit("%");
+    {
+        gh::Col c(b);
+        b.Gauge().valueInt(63);
+        b.GaugeLinear().valueInt(12);
+    }
+}
