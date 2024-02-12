@@ -1,1 +1,64 @@
-
+{
+  "name": "MagicLamp",
+  "about": "SmartRelay",
+  "version": "0.14",
+  "notes": "test test /n test!",
+  "new_install_prompt_erase":true,
+  "new_install_improv_wait_time":0,
+  "builds": [
+    {
+      "chipFamily": "Arduino",
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/Crazy-Max-Blog/MagicLamp/main/bin/firmware.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP8266",
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/Crazy-Max-Blog/MagicLamp/main/bin/firmware.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/Crazy-Max-Blog/MagicLamp/main/bin/firmware.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/Crazy-Max-Blog/MagicLamp/main/bin/firmware.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-S2",
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/Crazy-Max-Blog/MagicLamp/main/bin/firmware.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/Crazy-Max-Blog/MagicLamp/main/bin/firmware.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
