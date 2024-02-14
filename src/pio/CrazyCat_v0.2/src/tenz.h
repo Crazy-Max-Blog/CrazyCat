@@ -1,3 +1,4 @@
+#pragma once
 #include <GyverHX711.h>
 GyverHX711 sensor(sets.devs.tenz.pin_data, sets.devs.tenz.pin_clk, HX_GAIN64_A);
 int tenz_valuet;

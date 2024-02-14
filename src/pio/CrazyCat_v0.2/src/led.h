@@ -1,3 +1,5 @@
+#pragma once
+#include "config.h"
 void led_es(bool s);
 bool led_state = 0;
 

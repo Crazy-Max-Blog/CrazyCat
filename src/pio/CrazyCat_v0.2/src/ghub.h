@@ -5,6 +5,8 @@
 GyverHub hub;
 
 #include "config.h"
+#include "tenz.h"
+#include "led.h"
 
 bool ghub_led = 0;
 
@@ -14,13 +16,18 @@ void gh_home(GH::Builder& b) {
   b.Title().valueStr("Home").noLabel(1).noTab(1);
   if(b.beginRow()) {
     b.Label().valueStr("Mass:" ).noTab().noLabel();
-    b.Label_("mass").valueInt(tenz_valuet).noTab().noLabel();
+    b.Label_("mass", &tenz_valuet).valueInt(tenz_valuet).noTab().noLabel();
 
     if(b.Button().label("Tare").noTab().click()) sensor.tare();
     bool st = true;
     if(b.Switch(&st).label("State").noTab().click()) sensor.sleepMode(!st);
     b.endRow();
   }
+  gh::Widget w = b.GaugeLinear_("mass1", &tenz_valuet).valueInt(tenz_valuet).noTab().noLabel();
+//#define RGB(r, g, b) (long((r)<<16)+((g)<<8)+(b))
+  //long c=RGB(255,0,0);
+  w.color(gh::Color(255, 0, 0));
+  w.range(0,1000,1);
 
   b.beginRow();
   b.Icon_("led", &ghub_led).label("Cat").icon("").noTab();
@@ -66,7 +73,7 @@ void gh_sets(GH::Builder& b) {
 
 // билдер
 void build(GH::Builder& b) {
-  b.Menu("Home;Settings");
+  /*b.Menu("Home;Settings");
   switch (b.menu()) {
     case 0:
       gh_home(b);
@@ -76,7 +83,7 @@ void build(GH::Builder& b) {
       break;
     default:
       break;
-  }
+  }*/
 }
 
 void ghub_begin() {    
@@ -86,10 +93,10 @@ void ghub_begin() {
   hub.stream.config(&Serial, gh::Connection::Serial);
 //#endif
 
-#ifdef ESP_BUILD
-  if(WiFi.status() == WL_CONNECTED) 
-    mqtt_reconnect(); //hub.mqtt.config(sets.mqtt.host, sets.mqtt.port.toInt(), sets.mqtt.ssid, sets.mqtt.pass);  // + MQTT
-#endif
+//#ifdef ESP_BUILD
+  //if(WiFi.status() == WL_CONNECTED) 
+  //  mqtt_reconnect(); //hub.mqtt.config(sets.mqtt.host, sets.mqtt.port.toInt(), sets.mqtt.ssid, sets.mqtt.pass);  // + MQTT
+//#endif
 
   hub.config(F(PR_PREFIX), F(PR_NAME), PR_ICON, 0x55443420);
   hub.onBuild(build);
@@ -99,6 +106,7 @@ void ghub_begin() {
 
 void ghub_tick() {
   hub.tick();
+  
   //data.tick();
   //static gh::Timer tmr(500);
   //if(tmr) hub.update("mass").valueInt(random(10));
